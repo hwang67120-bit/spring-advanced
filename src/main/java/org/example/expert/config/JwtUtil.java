@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
@@ -20,8 +21,10 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
+
     private static final String BEARER_PREFIX = "Bearer ";
     private static final long TOKEN_TIME = 60 * 60 * 1000L; // 60분
+
 
     @Value("${jwt.secret.key}")
     private String secretKey;
@@ -31,6 +34,7 @@ public class JwtUtil {
     @PostConstruct
     public void init() {
         byte[] bytes = Base64.getDecoder().decode(secretKey);
+        // byte[] bytes = secretKey.getBytes();
         key = Keys.hmacShaKeyFor(bytes);
     }
 
