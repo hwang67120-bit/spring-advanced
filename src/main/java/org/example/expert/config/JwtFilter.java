@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.expert.domain.user.enums.UserRole;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 public class JwtFilter implements Filter {
+
 
     private final JwtUtil jwtUtil;
     private final ObjectMapper objectMapper;
